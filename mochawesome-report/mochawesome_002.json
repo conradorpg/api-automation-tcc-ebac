@@ -1,0 +1,132 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2022-07-18T23:45:19.297Z",
+    "end": "2022-07-18T23:45:21.359Z",
+    "duration": 2062,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "63a6478d-b9fc-4d20-91f3-1c47583ad605",
+      "title": "",
+      "fullFile": "cypress/integration/cupons.spec.js",
+      "file": "cypress/integration/cupons.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "933c78a0-da9e-4d54-a150-eac7c0f4e24e",
+          "title": "Testes com a API EBAC-Shop - Cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Listar Cupons",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupons",
+              "timedOut": null,
+              "duration": 1001,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/wp-json/wc/v3/coupons\",\n  headers: {\n    accept: 'application/json',\n    authorization: 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy'\n  }\n}).then(Response => {\n  expect(Response.status).to.equal(200);\n  return Response.body.id[0];\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading '0')",
+                "estack": "TypeError: Cannot read properties of undefined (reading '0')\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress/integration/cupons.spec.js:135:30)",
+                "diff": null
+              },
+              "uuid": "8b2b8d9f-4b6d-4dfe-9bbe-fa8c7aabfe0c",
+              "parentUUID": "933c78a0-da9e-4d54-a150-eac7c0f4e24e",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cadastrar Cupons",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Cadastrar Cupons",
+              "timedOut": null,
+              "duration": 986,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"POST\",\n  url: \"/produtos\",\n  headers: {\n    accept: 'application/json',\n    authorization: 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy'\n  },\n  body: {\n    \"code\": _faker.default.commerce.productAdjective(),\n    \"amount\": _faker.default.commerce.price(10, 100),\n    \"discount_type\": \"fixed_product\",\n    \"description\": _faker.default.commerce.productDescription()\n  }\n}).then(Response => {\n  expect(Response.status).to.equal(200);\n  return Response.body.id[-1];\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading '-1')",
+                "estack": "TypeError: Cannot read properties of undefined (reading '-1')\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress/integration/cupons.spec.js:154:30)",
+                "diff": null
+              },
+              "uuid": "42a17148-91d9-43e7-a177-b949c28d301e",
+              "parentUUID": "933c78a0-da9e-4d54-a150-eac7c0f4e24e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8b2b8d9f-4b6d-4dfe-9bbe-fa8c7aabfe0c",
+            "42a17148-91d9-43e7-a177-b949c28d301e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1987,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reporterDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
