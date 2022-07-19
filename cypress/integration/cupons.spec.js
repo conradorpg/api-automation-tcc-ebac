@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 import faker from "@faker-js/faker"
-import { number } from "joi";
 
 describe('Testes com a API EBAC-Shop - Cupons', () => {
 
@@ -13,8 +12,8 @@ describe('Testes com a API EBAC-Shop - Cupons', () => {
         authorization: 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy'
       }
     }).then((Response) => {
+      cy.log(Response.body)
       expect(Response.status).to.equal(200)
-      return Response.body.id
     })
   });
 
@@ -33,8 +32,9 @@ describe('Testes com a API EBAC-Shop - Cupons', () => {
         "description": faker.commerce.productDescription()
       },
     }).then((Response) => {
+      const obj = cy.log(Response.body)
       expect(Response.status).to.equal(200)
-      return Response.body.id
+      return obj
     })
   });
 

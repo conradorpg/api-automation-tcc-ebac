@@ -26,6 +26,8 @@
 
 // -- Meus comandos --
 
+import faker from "@faker-js/faker"
+
 Cypress.Commands.add('listCoupons', () => {
   cy.request({
     method: "GET",
@@ -36,20 +38,20 @@ Cypress.Commands.add('listCoupons', () => {
     }
   }).then((Response) => {
     expect(Response.status).to.equal(200)
-    // return Response.body.usuarios[0]._id
+    // return Response.body
   })
 });
 
-Cypress.Commands.add('registerCoupons', (token, nome, preco, descricao, quantidade) => {
+Cypress.Commands.add('registerCoupons', () => {
   cy.request({
     method: "POST",
     url: "/produtos",
     headers: { authorization: token },
     body: {
-      "nome": nome,
-      "preco": preco,
-      "descricao": descricao,
-      "quantidade": quantidade
+      "code": faker.commerce.productAdjective(),
+      "amount": faker.commerce.price(10, 100),
+      "discount_type": "fixed_product",
+      "description": faker.commerce.productDescription()
     },
     failOnStatusCode: false
   })
