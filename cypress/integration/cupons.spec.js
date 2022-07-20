@@ -1,40 +1,54 @@
 /// <reference types="cypress" />
+
 import faker from "@faker-js/faker"
+const info = require('../fixtures/info.json')
 
 describe('Testes com a API EBAC-Shop - Cupons', () => {
 
-  it('Listar Cupons', () => {
+  it.only('Listar Cupons', () => {
     cy.request({
       method: "GET",
-      url: "/wp-json/wc/v3/coupons",
+      url: "/wc/v3/coupons",
       headers: {
-        accept: 'application/json',
-        authorization: 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy'
+        accept: info.accept,
+        authorization: info.authorization
       }
     }).then((Response) => {
-      cy.log(Response.body)
       expect(Response.status).to.equal(200)
+      // expect(Response.body[0].id).to.equal(6332)
+      cy.get(Response.body[0][id])
     })
+  });
+
+  it('Listar Cupom por Id', () => {
+    cy.registerCoupons()
+      .then(Response => {
+        let cupomId = Response.body[0]
+        cy.request({
+          method: "GET",
+          url: `/wc/v3/coupons/${cupomId}`,
+        }).then((Response) => {
+          expect(Response.status).to.equal(200)
+        })
+      })
   });
 
   it('Cadastrar Cupons', () => {
     cy.request({
       method: "POST",
-      url: "/produtos",
+      url: "/wc/v3/coupons",
       headers: {
-        accept: 'application/json',
-        authorization: 'Basic YWRtaW5fZWJhYzpAYWRtaW4hJmJAYyEyMDIy'
+        accept: info.accept,
+        authorization: info.authorization
       },
       body: {
-        "code": faker.commerce.productAdjective(),
+        "code": faker.random.numeric(4),
         "amount": faker.commerce.price(10, 100),
         "discount_type": "fixed_product",
         "description": faker.commerce.productDescription()
       },
     }).then((Response) => {
-      const obj = cy.log(Response.body)
-      expect(Response.status).to.equal(200)
-      return obj
+      expect(Response.status).to.equal(201)
     })
   });
 
