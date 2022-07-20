@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-07-20T17:30:05.447Z",
+    "end": "2022-07-20T17:30:14.040Z",
+    "duration": 8593,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e5277359-d4b4-4eb1-8a7c-1399f464e56b",
+      "title": "",
+      "fullFile": "cypress/integration/cupons.spec.js",
+      "file": "cypress/integration/cupons.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9b75842a-9474-477c-97c5-7642c17487fd",
+          "title": "Testes com a API EBAC-Shop - Cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Listar Cupom por Id",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupom por Id",
+              "timedOut": null,
+              "duration": 7715,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerCoupons().then(Response => {\n  let cupomId = Response.body.id;\n  cy.request({\n    method: \"GET\",\n    url: `/wc/v3/coupons/${cupomId}`\n  }).then(Response => {\n    expect(Response.status).to.equal(200);\n  });\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttp://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/6508\n\nThe response we received from your web server was:\n\n  > 401: Unauthorized\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/6508\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.6.1 Chrome/94.0.4606.81 Electron/15.5.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 401 - Unauthorized\nHeaders: {\n  \"date\": \"Wed, 20 Jul 2022 17:30:11 GMT\",\n  \"server\": \"Apache/2.4.38 (Debian)\",\n  \"x-powered-by\": \"PHP/7.4.19\",\n  \"x-robots-tag\": \"noindex\",\n  \"link\": \"<http://lojaebac.ebaconline.art.br/wp-json/>; rel=\\\"https://api.w.org/\\\"\",\n  \"x-content-type-options\": \"nosniff\",\n  \"access-control-expose-headers\": \"X-WP-Total, X-WP-TotalPages, Link\",\n  \"access-control-allow-headers\": \"Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type\",\n  \"vary\": \"Origin\",\n  \"content-length\": \"115\",\n  \"keep-alive\": \"timeout=5, max=99\",\n  \"connection\": \"Keep-Alive\",\n  \"content-type\": \"application/json; charset=UTF-8\"\n}\nBody: {\n  \"code\": \"woocommerce_rest_cannot_view\",\n  \"message\": \"Sem permissão para ver este recurso.\",\n  \"data\": {\n    \"status\": 401\n  }\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttp://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/6508\n\nThe response we received from your web server was:\n\n  > 401: Unauthorized\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/6508\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.6.1 Chrome/94.0.4606.81 Electron/15.5.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 401 - Unauthorized\nHeaders: {\n  \"date\": \"Wed, 20 Jul 2022 17:30:11 GMT\",\n  \"server\": \"Apache/2.4.38 (Debian)\",\n  \"x-powered-by\": \"PHP/7.4.19\",\n  \"x-robots-tag\": \"noindex\",\n  \"link\": \"<http://lojaebac.ebaconline.art.br/wp-json/>; rel=\\\"https://api.w.org/\\\"\",\n  \"x-content-type-options\": \"nosniff\",\n  \"access-control-expose-headers\": \"X-WP-Total, X-WP-TotalPages, Link\",\n  \"access-control-allow-headers\": \"Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type\",\n  \"vary\": \"Origin\",\n  \"content-length\": \"115\",\n  \"keep-alive\": \"timeout=5, max=99\",\n  \"connection\": \"Keep-Alive\",\n  \"content-type\": \"application/json; charset=UTF-8\"\n}\nBody: {\n  \"code\": \"woocommerce_rest_cannot_view\",\n  \"message\": \"Sem permissão para ver este recurso.\",\n  \"data\": {\n    \"status\": 401\n  }\n}\n\n\nhttps://on.cypress.io/request\n    at http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:165424:80\n    at tryCatcher (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress/integration/cupons.spec.js:153:10)",
+                "diff": null
+              },
+              "uuid": "3e5e81d7-3302-41b1-8f88-cde125e3dc72",
+              "parentUUID": "9b75842a-9474-477c-97c5-7642c17487fd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "3e5e81d7-3302-41b1-8f88-cde125e3dc72"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7715,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reporterDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

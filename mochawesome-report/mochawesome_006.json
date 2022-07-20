@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-07-20T14:23:01.695Z",
+    "end": "2022-07-20T14:23:04.131Z",
+    "duration": 2436,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "27880ab6-1243-4eb4-8f49-b810d8005a30",
+      "title": "",
+      "fullFile": "cypress/integration/cupons.spec.js",
+      "file": "cypress/integration/cupons.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2fc32851-0c99-40be-8701-c575c1f57d5c",
+          "title": "Testes com a API EBAC-Shop - Cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Listar Cupons",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupons",
+              "timedOut": null,
+              "duration": 743,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/wc/v3/coupons\",\n  headers: {\n    accept: info.accept,\n    authorization: info.authorization\n  }\n}).then(Response => {\n  expect(Response.status).to.equal(200); // expect(Response.body[0].id).to.equal(6332)\n  cy.get(Response.body[0].id);\n});",
+              "err": {},
+              "uuid": "25d721e9-f43e-48c6-8ce4-5c0a5f8a293d",
+              "parentUUID": "2fc32851-0c99-40be-8701-c575c1f57d5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Listar Cupom por Id",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupom por Id",
+              "timedOut": null,
+              "duration": 900,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerCoupons().then(Response => {\n  let cupomId = cy.get(Response.body[0].id);\n  cy.request({\n    method: \"GET\",\n    url: `/wc/v3/coupons/${cupomId}`\n  }).then(Response => {\n    expect(Response.status).to.equal(200);\n  });\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'id')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'id')\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress/integration/cupons.spec.js:152:45)",
+                "diff": null
+              },
+              "uuid": "6e4740cf-5137-487d-823a-1f3a8a9afbc3",
+              "parentUUID": "2fc32851-0c99-40be-8701-c575c1f57d5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cadastrar Cupons",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Cadastrar Cupons",
+              "timedOut": null,
+              "duration": 725,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"POST\",\n  url: \"/wc/v3/coupons\",\n  headers: {\n    accept: info.accept,\n    authorization: info.authorization\n  },\n  body: {\n    \"code\": _faker.default.random.numeric(4),\n    \"amount\": _faker.default.commerce.price(10, 100),\n    \"discount_type\": \"fixed_product\",\n    \"description\": _faker.default.commerce.productDescription()\n  }\n}).then(Response => {\n  expect(Response.status).to.equal(201);\n});",
+              "err": {},
+              "uuid": "3c958752-bf6b-4fa9-87b1-f77ae15030b4",
+              "parentUUID": "2fc32851-0c99-40be-8701-c575c1f57d5c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "25d721e9-f43e-48c6-8ce4-5c0a5f8a293d",
+            "3c958752-bf6b-4fa9-87b1-f77ae15030b4"
+          ],
+          "failures": [
+            "6e4740cf-5137-487d-823a-1f3a8a9afbc3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2368,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reporterDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

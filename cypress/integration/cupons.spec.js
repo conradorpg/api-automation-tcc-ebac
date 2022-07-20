@@ -5,7 +5,7 @@ const info = require('../fixtures/info.json')
 
 describe('Testes com a API EBAC-Shop - Cupons', () => {
 
-  it.only('Listar Cupons', () => {
+  it('Listar Cupons', () => {
     cy.request({
       method: "GET",
       url: "/wc/v3/coupons",
@@ -16,17 +16,21 @@ describe('Testes com a API EBAC-Shop - Cupons', () => {
     }).then((Response) => {
       expect(Response.status).to.equal(200)
       // expect(Response.body[0].id).to.equal(6332)
-      cy.get(Response.body[0][id])
+      cy.get(Response.body[0].id)
     })
   });
 
-  it('Listar Cupom por Id', () => {
+  it.only('Listar Cupom por Id', () => {
     cy.registerCoupons()
       .then(Response => {
-        let cupomId = Response.body[0]
+        let cupomId = Response.body.id
         cy.request({
           method: "GET",
           url: `/wc/v3/coupons/${cupomId}`,
+          headers: {
+            accept: info.accept,
+            authorization: info.authorization
+          }
         }).then((Response) => {
           expect(Response.status).to.equal(200)
         })

@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-07-20T14:22:04.354Z",
+    "end": "2022-07-20T14:22:07.162Z",
+    "duration": 2808,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9efeb22c-8b2d-4c95-8536-fadae76a5bd4",
+      "title": "",
+      "fullFile": "cypress/integration/cupons.spec.js",
+      "file": "cypress/integration/cupons.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "dd5cdd9e-6369-4537-a3f3-d37014493402",
+          "title": "Testes com a API EBAC-Shop - Cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Listar Cupons",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupons",
+              "timedOut": null,
+              "duration": 757,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"GET\",\n  url: \"/wc/v3/coupons\",\n  headers: {\n    accept: info.accept,\n    authorization: info.authorization\n  }\n}).then(Response => {\n  expect(Response.status).to.equal(200); // expect(Response.body[0].id).to.equal(6332)\n  cy.get(Response.body[0].id);\n});",
+              "err": {},
+              "uuid": "de576587-b773-4180-a989-1d665dfeea4e",
+              "parentUUID": "dd5cdd9e-6369-4537-a3f3-d37014493402",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Listar Cupom por Id",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupom por Id",
+              "timedOut": null,
+              "duration": 1282,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerCoupons().then(Response => {\n  let cupomId = Response.body[0];\n  cy.request({\n    method: \"GET\",\n    url: `/wc/v3/coupons/${cupomId}`\n  }).then(Response => {\n    expect(Response.status).to.equal(200);\n  });\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttp://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/undefined\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/undefined\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.6.1 Chrome/94.0.4606.81 Electron/15.5.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"date\": \"Wed, 20 Jul 2022 14:22:05 GMT\",\n  \"server\": \"Apache/2.4.38 (Debian)\",\n  \"x-powered-by\": \"PHP/7.4.19\",\n  \"x-robots-tag\": \"noindex\",\n  \"link\": \"<http://lojaebac.ebaconline.art.br/wp-json/>; rel=\\\"https://api.w.org/\\\"\",\n  \"x-content-type-options\": \"nosniff\",\n  \"access-control-expose-headers\": \"X-WP-Total, X-WP-TotalPages, Link\",\n  \"access-control-allow-headers\": \"Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type\",\n  \"vary\": \"Origin\",\n  \"content-length\": \"153\",\n  \"keep-alive\": \"timeout=5, max=98\",\n  \"connection\": \"Keep-Alive\",\n  \"content-type\": \"application/json; charset=UTF-8\"\n}\nBody: {\n  \"code\": \"rest_no_route\",\n  \"message\": \"Nenhuma rota foi encontrada que corresponde com o URL e o método de requisição.\",\n  \"data\": {\n    \"status\": 404\n  }\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttp://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/undefined\n\nThe response we received from your web server was:\n\n  > 404: Not Found\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: GET\nURL: http://lojaebac.ebaconline.art.br/wp-json/wc/v3/coupons/undefined\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.6.1 Chrome/94.0.4606.81 Electron/15.5.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\"\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 404 - Not Found\nHeaders: {\n  \"date\": \"Wed, 20 Jul 2022 14:22:05 GMT\",\n  \"server\": \"Apache/2.4.38 (Debian)\",\n  \"x-powered-by\": \"PHP/7.4.19\",\n  \"x-robots-tag\": \"noindex\",\n  \"link\": \"<http://lojaebac.ebaconline.art.br/wp-json/>; rel=\\\"https://api.w.org/\\\"\",\n  \"x-content-type-options\": \"nosniff\",\n  \"access-control-expose-headers\": \"X-WP-Total, X-WP-TotalPages, Link\",\n  \"access-control-allow-headers\": \"Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type\",\n  \"vary\": \"Origin\",\n  \"content-length\": \"153\",\n  \"keep-alive\": \"timeout=5, max=98\",\n  \"connection\": \"Keep-Alive\",\n  \"content-type\": \"application/json; charset=UTF-8\"\n}\nBody: {\n  \"code\": \"rest_no_route\",\n  \"message\": \"Nenhuma rota foi encontrada que corresponde com o URL e o método de requisição.\",\n  \"data\": {\n    \"status\": 404\n  }\n}\n\n\nhttps://on.cypress.io/request\n    at http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:165424:80\n    at tryCatcher (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress/integration/cupons.spec.js:153:10)",
+                "diff": null
+              },
+              "uuid": "d9adcf60-ad6e-4893-8035-8b9621fb0297",
+              "parentUUID": "dd5cdd9e-6369-4537-a3f3-d37014493402",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cadastrar Cupons",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Cadastrar Cupons",
+              "timedOut": null,
+              "duration": 688,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: \"POST\",\n  url: \"/wc/v3/coupons\",\n  headers: {\n    accept: info.accept,\n    authorization: info.authorization\n  },\n  body: {\n    \"code\": _faker.default.random.numeric(4),\n    \"amount\": _faker.default.commerce.price(10, 100),\n    \"discount_type\": \"fixed_product\",\n    \"description\": _faker.default.commerce.productDescription()\n  }\n}).then(Response => {\n  expect(Response.status).to.equal(201);\n});",
+              "err": {},
+              "uuid": "6f810d14-0da9-4947-b298-73e75c90d692",
+              "parentUUID": "dd5cdd9e-6369-4537-a3f3-d37014493402",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "de576587-b773-4180-a989-1d665dfeea4e",
+            "6f810d14-0da9-4947-b298-73e75c90d692"
+          ],
+          "failures": [
+            "d9adcf60-ad6e-4893-8035-8b9621fb0297"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2727,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reporterDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

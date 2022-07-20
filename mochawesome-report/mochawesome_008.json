@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-07-20T14:29:26.648Z",
+    "end": "2022-07-20T14:29:28.089Z",
+    "duration": 1441,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ba664f30-5086-4859-b16c-04e4654d47f4",
+      "title": "",
+      "fullFile": "cypress/integration/cupons.spec.js",
+      "file": "cypress/integration/cupons.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "835f2c51-a58a-4133-a2c1-05afd5fea521",
+          "title": "Testes com a API EBAC-Shop - Cupons",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Listar Cupom por Id",
+              "fullTitle": "Testes com a API EBAC-Shop - Cupons Listar Cupom por Id",
+              "timedOut": null,
+              "duration": 1338,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.registerCoupons().then(Response => {\n  let cupomId = cy.get(Response.body[0].id);\n  cy.request({\n    method: \"GET\",\n    url: `/wc/v3/coupons/${cupomId}`\n  }).then(Response => {\n    expect(Response.status).to.equal(200);\n  });\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'id')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'id')\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress/integration/cupons.spec.js:152:45)",
+                "diff": null
+              },
+              "uuid": "5f1a069b-70ec-401d-8703-82a2236aa297",
+              "parentUUID": "835f2c51-a58a-4133-a2c1-05afd5fea521",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "5f1a069b-70ec-401d-8703-82a2236aa297"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1338,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reporterDir": "mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
