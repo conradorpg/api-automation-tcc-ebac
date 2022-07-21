@@ -20,7 +20,7 @@ describe('Testes com a API EBAC-Shop - Cupons', () => {
     })
   });
 
-  it.only('Listar Cupom por Id', () => {
+  it('Listar Cupom por Id', () => {
     cy.registerCoupons()
       .then(Response => {
         let cupomId = Response.body.id
